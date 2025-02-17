@@ -1,0 +1,35 @@
+local_search Results:
+------------------
+Seed: 5
+Average objective: 1402984.30
+Best solution objective: 1248863.00
+Best solution (calls): 4, 4, 7, 7, 0, 3, 3, 0, 1, 5, 5, 2, 1, 2, 0, 6, 6
+Improvement from initial: 61.49%
+Runtime (seconds): 2.58
+------------------
+
+
+
+simulated_annealing Results:
+------------------
+Seed: 2
+Average objective: 1415787.80
+Best solution objective: 1164697.00
+Best solution (calls): [4, 4, 2, 2, 0, 7, 7, 0, 1, 5, 5, 3, 1, 3, 0, 6, 6]
+Improvement from initial: 64.08%
+Runtime (seconds): 2.73
+------------------
+Seed: 2
+Average objective: 1415787.80
+Best solution objective: 1164697.00
+Best solution (calls): ['4, 4, 2, 2, 0, 7, 7, 0, 1, 5, 5, 3, 1, 3, 0, 6, 6']
+Improvement from initial: 64.08%
+Runtime (seconds): 2.76
+------------------
+Seed: 5
+Average objective: 1369793.05
+Best solution objective: 1164697.00
+Best solution (calls): 4, 4, 7, 7, 0, 2, 2, 0, 1, 5, 5, 3, 1, 3, 0, 6, 6
+Improvement from initial: 64.08%
+Runtime (seconds): 2.54
+------------------
