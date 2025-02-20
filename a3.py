@@ -100,40 +100,75 @@ def local_search(solution, data, iteration_number, seed=None):
         expensive_call = True
 
     # Over available vehicles, give property True if vehicle capacity over mean
+    probs = np.ones(len(available_vehicles))
     large_capacity = np.array([data['VesselCapacity'][v] > data['average_capacity'] for v in available_vehicles])
 
     if large_call:
         # Larger probability for vehicles above average capacity
-        probs = np.where(large_capacity, 0.7, 0.4)
+        probs = np.where(large_capacity, 1.5, 0.8)
+        probs[-1] = 2
 
     else:
         # Larger probability for vehicles below average capacity
-        probs = np.where(large_capacity, 1, 1)
+        probs = np.where(large_capacity, 0.7, 1)
 
-    if expensive_call and current_vehicle == n_vehicles - 1 or iteration_number < n_vehicles // 3:
-        # Lower probability for dummy
-        probs = np.where(available_vehicles == n_vehicles - 1, 0.2, probs)
+    if expensive_call and current_vehicle == n_vehicles -1 or iteration_number < n_vehicles // 3:
+        # lower probability for dummy
+        probs[-1] = 0.2
 
     # Normalize probabilities
-    probs = probs / probs.sum()
+    probs = probs / np.sum(probs)
+    #print(available_vehicles, probs)
+
+
 
     # Make sure we still have valid vehicles
     if len(probs) == 0:
-        available_vehicles = np.array([])
+        target_vehicle = n_vehicles - 1
     else:
         # Use the computed distribution to choose vehicles
         available_vehicles = np.random.choice(available_vehicles, size=len(available_vehicles), replace=False, p=probs)
-    
-    # Make sure the dummy vehicle is always available
-    if available_vehicles.size == 0:
-        target_vehicle = n_vehicles - 1
-    else:
         target_vehicle = np.random.choice(available_vehicles)
     
     # Get the range for the target vehicle
     start_idx = 0 if target_vehicle == 0 else vehicle_bounds[target_vehicle - 1] + 1
     end_idx = vehicle_bounds[target_vehicle] if target_vehicle < len(vehicle_bounds) else len(solution)
     
+    """# Replace the random position selection with systematic evaluation
+    route_length = end_idx - start_idx
+    vehicle_route = solution[start_idx:end_idx]
+    best_route = []
+    best_cost = np.inf
+    
+    # If route is empty or this is current vehicle
+    if route_length == 0:
+        best_route = [call_to_move, call_to_move]
+    else:
+        L = len(vehicle_route)
+        # Try all possible positions for pickup and delivery
+        for i in range(L + 1):  # +1 to allow insertion at end
+            for j in range(i + 1, L + 2):  # ensure delivery comes after pickup
+                new_route = vehicle_route.copy()
+                # Insert delivery first so insertion at i doesn't shift j
+                new_route.insert(j, call_to_move)
+                new_route.insert(i, call_to_move)
+                
+                # Check cost using cache
+                candidate_key = tuple(new_route)
+                if candidate_key in route_cost_cache:
+                    new_cost = route_cost_cache[candidate_key]
+                else:
+                    new_cost = cost_function_light(new_route, data, target_vehicle)
+                    route_cost_cache[candidate_key] = new_cost
+
+                if new_cost < best_cost:
+                    best_cost = new_cost
+                    best_route = new_route.copy()
+    
+    # Insert the best route back into the solution
+    solution[start_idx:end_idx] = best_route"""
+    
+
     # Choose random positions for reinsertion within the chosen vehicle's route
     route_length = end_idx - start_idx
     if route_length >= 2:
@@ -213,7 +248,9 @@ def run_experiment(algorithm, data, args):
     """
     Run experiment for specified algorithm and data.
     """
-    # Calculate greedy matrix (weights and outsource costs)
+    # Initialize global variables for cost calculation
+    init_globals(data)
+
     initial_solution = all_calls_outsorced(data)
     best_solution = initial_solution.copy()
     initial_score = evaluate_solution(best_solution, data)
@@ -260,8 +297,6 @@ def run_experiment(algorithm, data, args):
 
         total_time += time.time() - start_time
     
-    # make infeas_counts as percentage of total runs
-    infeas_counts = {k: v / args.number_runs * 10000 for k, v in infeas_counts.items()}
 
     # Calculate average of best objectives from each run
     average_objective = sum(best_objectives) / len(best_objectives)

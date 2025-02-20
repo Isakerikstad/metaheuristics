@@ -16,7 +16,18 @@ Average
 ------------------
 
 
+
 simulated_annealing Results:
+------------------
+Seed: 5
+Average objective: 7665984.90
+Best solution objective: 6935153.00
+Best solution (calls): [34, 30, 30, 34, 26, 26, 0, 15, 15, 11, 11, 33, 33, 20, 20, 0, 9, 23, 23, 3, 3, 7, 7, 27, 9, 27, 22, 22, 31, 31, 0, 4, 4, 16, 16, 1, 1, 28, 28, 2, 2, 29, 29, 0, 17, 24, 24, 21, 32, 32, 17, 21, 0, 19, 12, 19, 18, 18, 5, 5, 25, 12, 25, 0, 14, 14, 35, 35, 10, 10, 0, 6, 8, 13, 6, 8, 13]
+Improvement from initial: 58.31%
+Runtime (seconds): 10.01
+Feasible solutions found: 1
+Infeasibility causes and counts: {}
+Time of experiment: 2025-02-20 14:40:48
 ------------------
 Seed: 5
 Average objective: 7285846.20

@@ -1,5 +1,15 @@
 local_search Results:
 ------------------
+Seed: None
+Average objective: 1908833.70
+Best solution objective: 1545527.00
+Best solution (calls): [4, 4, 2, 2, 0, 3, 3, 0, 5, 5, 7, 7, 0, 1, 6, 1, 6]
+Improvement from initial: 41.13%
+Runtime (seconds): 4.72
+Feasible solutions found: 13854
+Infeasibility causes and counts: {'incompatible vessel and cargo': 4403000.0, 'Capacity exceeded': 48001000.0, 'Time window exceeded at call 2': 11434000.0, 'Time window exceeded at call 1': 11916000.0, 'Time window exceeded at call 4': 8031000.0, 'Time window exceeded at call 3': 2362000.0}
+Time of experiment: 2025-02-20 15:35:28
+------------------
 Seed: 5
 Average objective: 1389994.90
 Best solution objective: 1134176.00
