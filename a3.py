@@ -114,7 +114,7 @@ def local_search(solution, data, iteration_number, seed=None):
 
     if expensive_call and current_vehicle == n_vehicles -1 or iteration_number < n_vehicles // 3:
         # lower probability for dummy
-        probs[-1] = 0.2
+        probs[-1] = 0.1
 
     # Normalize probabilities
     probs = probs / np.sum(probs)

@@ -19,7 +19,29 @@ Runtime: 6.65828800201416
 
 
 
+
+
 local_search Results:
+------------------
+Seed: None
+Average objective: 2967113.30
+Best solution objective: 2427280.00
+Best solution (calls): [4, 4, 15, 15, 11, 11, 16, 16, 0, 6, 6, 5, 18, 5, 14, 17, 17, 14, 18, 0, 9, 8, 8, 9, 13, 13, 0, 3, 3, 10, 10, 12, 12, 0, 7, 7, 1, 1, 0, 2, 2]
+Improvement from initial: 66.88%
+Runtime (seconds): 7.35
+Feasible solutions found: 4616
+Infeasibility causes and counts: {'Capacity exceeded': 60276, 'Time window exceeded at call 2': 7901, 'Time window exceeded at call 1': 4724, 'Time window exceeded at call 3': 5093, 'incompatible vessel and cargo': 4300, 'Time window exceeded at call 4': 4853, 'Time window exceeded at call 5': 3023, 'Time window exceeded at call 6': 2541, 'Time window exceeded at call 7': 1215, 'Time window exceeded at call 8': 988, 'Time window exceeded at call 10': 141, 'Time window exceeded at call 9': 323, 'Time window exceeded at call 11': 7}
+Time of experiment: 2025-02-20 15:42:56
+------------------
+Seed: None
+Average objective: 5084856.70
+Best solution objective: 4024418.00
+Best solution (calls): [4, 4, 11, 12, 11, 12, 0, 7, 8, 7, 17, 8, 17, 0, 6, 5, 6, 5, 16, 16, 0, 14, 14, 0, 10, 1, 10, 1, 0, 2, 3, 9, 13, 15, 18, 2, 3, 9, 13, 15, 18]
+Improvement from initial: 43.25%
+Runtime (seconds): 7.69
+Feasible solutions found: 8970
+Infeasibility causes and counts: {'Time window exceeded at call 1': 8307, 'incompatible vessel and cargo': 4663, 'Capacity exceeded': 54398, 'Time window exceeded at call 2': 6733, 'Time window exceeded at call 5': 3454, 'Time window exceeded at call 4': 5166, 'Time window exceeded at call 6': 3382, 'Time window exceeded at call 3': 4392, 'Time window exceeded at call 7': 278, 'Time window exceeded at call 8': 126, 'Time window exceeded at call 9': 132}
+Time of experiment: 2025-02-20 15:42:30
 ------------------
 Seed: None
 Average objective: 5016753.00
