@@ -1,0 +1,3 @@
+Choose the vehicle to move a specific call to that is in the proximity of the specific call. either by starting point of vehicle or last call
+
+Measure the different degrees of infeasibilities for different aspects, as a parameter to have a criteria to accept an infeasible solution or taboo list
